@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Crimap — el mapa de tu ciudad</title>
+<meta name="description" content="Crimap es el mapa de lo que pasa en tu ciudad, con botón de auxilio y avisos de vecinos. Hecho en La Matanza.">
+<meta name="theme-color" content="#5546D8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600;6..72,700&family=Inter:wght@400;500;600;700;800&display=swap">
+<style>
+  :root{
+    --tinta:#1A1922; --tinta-2:#4A4756; --tinta-3:#77738A;
+    --fondo:#FBFAF8; --papel:#FFFFFF; --linea:#E5E2DD;
+    --violeta:#5546D8; --violeta-suave:#F1EFFD;
+    --noche:#171531; --noche-baja:#0C0B1C;
+    --tiza:#F3F1FF; --tiza-tenue:#9F9AC4; --violeta-claro:#8E80FF;
+    --rojo:#B3261E; --rojo-suave:#FDEDEC;
+    --ambar:#8A5A00; --ambar-suave:#FFF6E2; --ambar-linea:#EFD8A0;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --tinta:#ECE9F2; --tinta-2:#B7B2C4; --tinta-3:#89849A;
+      --fondo:#121118; --papel:#1B1A22; --linea:#2E2B38;
+      --violeta:#A99BFF; --violeta-suave:#231E3C;
+      --rojo:#FF8D82; --rojo-suave:#2E1614;
+      --ambar:#F3CE86; --ambar-suave:#2B2313; --ambar-linea:#4B3D1C;
+    }
+  }
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0; background:var(--fondo); color:var(--tinta);
+    font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+    font-size:16px; line-height:1.62; -webkit-font-smoothing:antialiased}
+  .ancho{max-width:44rem; margin:0 auto; padding:0 1.3rem}
+  a{color:var(--violeta)}
+
+  /* ── La portada ─────────────────────────────────────────────── */
+  .portada{
+    background:linear-gradient(170deg,var(--noche) 0%,var(--noche-baja) 100%);
+    color:var(--tiza); padding:3.4rem 0 3rem; position:relative; overflow:hidden;
+  }
+  .portada::after{
+    content:""; position:absolute; inset:auto -20% -60% -20%; height:60%;
+    background:radial-gradient(ellipse at 50% 0%, rgba(122,107,245,.30), transparent 70%);
+    pointer-events:none;
+  }
+  .portada .ancho{position:relative; z-index:1}
+  .logo{display:flex; align-items:center; gap:.6rem; margin-bottom:2rem}
+  .logo svg{width:34px; height:22px; display:block}
+  .logo b{font-size:1.05rem; font-weight:800; letter-spacing:.16em; color:var(--tiza)}
+  .portada h1{
+    font-family:'Newsreader',Georgia,serif; font-weight:700;
+    font-size:clamp(2.1rem,7vw,3.3rem); line-height:1.06; margin:0;
+    letter-spacing:-.02em; text-wrap:balance; color:var(--tiza);
+  }
+  .portada .lede{color:var(--tiza-tenue); font-size:1.08rem; margin:1rem 0 0; max-width:32rem}
+  .portada .lede b{color:var(--tiza); font-weight:600}
+  .origen{margin-top:1.6rem; font-size:.82rem; letter-spacing:.13em;
+    text-transform:uppercase; font-weight:700; color:var(--violeta-claro)}
+
+  /* ── Lo que hace ────────────────────────────────────────────── */
+  .quehace{padding:2.8rem 0 .6rem}
+  .cosa{display:flex; gap:1rem; padding:1.15rem 0; border-bottom:1px solid var(--linea)}
+  .cosa:last-child{border-bottom:0}
+  .cosa .ico{flex:none; width:2.4rem; height:2.4rem; border-radius:11px;
+    background:var(--violeta-suave); display:grid; place-items:center}
+  .cosa .ico svg{width:1.2rem; height:1.2rem; stroke:var(--violeta);
+    fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round}
+  .cosa h3{margin:.1rem 0 .15rem; font-size:1rem; font-weight:700}
+  .cosa p{margin:0; color:var(--tinta-2); font-size:.94rem}
+
+  /* ── Secciones de texto ─────────────────────────────────────── */
+  section.doc{padding:2.6rem 0 1rem; scroll-margin-top:1rem}
+  h2{font-family:'Newsreader',Georgia,serif; font-weight:600; font-size:1.6rem;
+    line-height:1.18; margin:0 0 .2rem; padding-top:1.4rem;
+    border-top:2px solid var(--tinta); text-wrap:balance}
+  h2 .n{font-family:'Inter',sans-serif; font-size:.7rem; font-weight:800;
+    letter-spacing:.15em; color:var(--violeta); display:block; margin-bottom:.35rem;
+    text-transform:uppercase}
+  h3{font-size:.98rem; font-weight:700; margin:1.5rem 0 .25rem}
+  p{margin:.65rem 0; color:var(--tinta-2)}
+  strong{color:var(--tinta); font-weight:600}
+  ul{margin:.65rem 0; padding-left:1.15rem; color:var(--tinta-2)}
+  li{margin:.4rem 0}
+  .fecha{color:var(--tinta-3); font-size:.85rem; margin:.5rem 0 1rem}
+
+  .tw{overflow-x:auto; margin:1.1rem 0; border:1px solid var(--linea); border-radius:10px}
+  table{border-collapse:collapse; width:100%; min-width:32rem;
+    background:var(--papel); font-size:.88rem}
+  th,td{text-align:left; padding:.62rem .8rem; border-bottom:1px solid var(--linea); vertical-align:top}
+  th{font-size:.7rem; letter-spacing:.08em; text-transform:uppercase;
+    color:var(--tinta-3); font-weight:700; background:var(--fondo)}
+  tr:last-child td{border-bottom:0}
+  td:first-child{font-weight:600; color:var(--tinta)}
+
+  .caja{border-radius:10px; padding:.95rem 1.15rem; margin:1.2rem 0; font-size:.95rem}
+  .caja p{margin:.3rem 0} .caja p:first-child{margin-top:0} .caja p:last-child{margin-bottom:0}
+  .caja .tit{font-weight:800; font-size:.74rem; letter-spacing:.09em;
+    text-transform:uppercase; margin-bottom:.35rem; display:block}
+  .clave{background:var(--violeta-suave); border-left:3px solid var(--violeta)}
+  .clave .tit{color:var(--violeta)} .clave p{color:var(--tinta)}
+  .ojo{background:var(--ambar-suave); border:1px dashed var(--ambar-linea)}
+  .ojo .tit{color:var(--ambar)} .ojo p{color:var(--ambar)}
+
+  .pasos{list-style:none; padding:0; margin:1.2rem 0; counter-reset:p}
+  .pasos li{counter-increment:p; display:flex; gap:.9rem; padding:.75rem 0;
+    border-bottom:1px solid var(--linea); color:var(--tinta-2)}
+  .pasos li:last-child{border-bottom:0}
+  .pasos li::before{content:counter(p); flex:none; width:1.6rem; height:1.6rem;
+    border-radius:50%; background:var(--violeta); color:#fff; font-size:.82rem;
+    font-weight:800; display:grid; place-items:center; margin-top:.1rem}
+  .pasos b{color:var(--tinta)}
+
+  .boton{display:inline-block; background:var(--violeta); color:#fff;
+    text-decoration:none; font-weight:700; font-size:.95rem;
+    padding:.8rem 1.4rem; border-radius:10px; margin:.4rem 0}
+
+  footer{margin-top:3rem; background:var(--noche); color:var(--tiza-tenue);
+    padding:2rem 0 2.4rem; font-size:.86rem}
+  footer .ancho{display:flex; flex-wrap:wrap; gap:1rem; justify-content:space-between; align-items:center}
+  footer a{color:var(--violeta-claro)}
+  footer .marca{color:var(--tiza); font-weight:800; letter-spacing:.14em; font-size:.9rem}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════════════════════
+     PORTADA
+     ══════════════════════════════════════════════════════════════════════ -->
+<header class="portada">
+  <div class="ancho">
+    <div class="logo">
+      <svg viewBox="0 0 160 100" aria-hidden="true">
+        <path fill="#8E80FF" d="M80 85 Q99 55 115 50 Q141 35 160 22 Q120 20 93 38 L88 20 L83 28 L77 28 L72 20 L67 38 Q40 20 0 22 Q19 35 45 50 Q61 55 80 85 Z"/>
+      </svg>
+      <b>CRIMAP</b>
+    </div>
+
+    <h1>El mapa de lo que pasa en tu ciudad.</h1>
+    <p class="lede">Lo hacen los vecinos, no una empresa. Un mapa de hechos confirmados, un botón de auxilio que avisa a los tuyos, y un lugar donde aparecen los perros perdidos. <b>Gratis.</b></p>
+    <p class="origen">Empezó en La Matanza</p>
+  </div>
+</header>
+
+<div class="ancho quehace">
+  <div class="cosa">
+    <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+    <div>
+      <h3>Qué pasa cerca tuyo</h3>
+      <p>Los vecinos marcan lo que ven. Nada aparece confirmado porque una sola persona lo dijo: hace falta que otros que estuvieron ahí lo respalden.</p>
+    </div>
+  </div>
+  <div class="cosa">
+    <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 2.5 4 6v6c0 4.7 3.4 8.4 8 9.5 4.6-1.1 8-4.8 8-9.5V6z"/><path d="M12 8v4.5"/><path d="M12 16h.01"/></svg></div>
+    <div>
+      <h3>Botón de auxilio</h3>
+      <p>Un botón grande, para cuando no hay tiempo de explicar nada. Avisa a las personas que vos cargaste, con tu ubicación en vivo.</p>
+    </div>
+  </div>
+  <div class="cosa">
+    <div class="ico"><svg viewBox="0 0 24 24"><path d="M3 11 21 3l-8 18-2-7z"/></svg></div>
+    <div>
+      <h3>Te lleva, y te avisa qué hay en el camino</h3>
+      <p>Te guía con la voz como cualquier navegador. La diferencia es que revisa todo el recorrido: si en alguna cuadra pasó algo, te lo dice antes de salir.</p>
+    </div>
+  </div>
+  <div class="cosa">
+    <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.3-7-9a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 4.7-7 9-7 9z"/></svg></div>
+    <div>
+      <h3>La parte buena</h3>
+      <p>Mascotas perdidas, pedidos de refugios y comedores, servicios de la zona, y un muro para preguntar cualquier cosa a los que viven cerca.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════════
+     POLÍTICA DE PRIVACIDAD
+     ══════════════════════════════════════════════════════════════════════ -->
+<section class="doc ancho" id="privacidad">
+  <h2><span class="n">Documento</span>Política de privacidad</h2>
+  <p class="fecha">Última actualización: 7 de septiembre de 2026</p>
+
+  <p>Crimap necesita saber dónde estás y quién sos para funcionar. Acá está qué se guarda, dónde, por cuánto tiempo y con quién se comparte, en castellano y sin vueltas.</p>
+
+  <h3>1 · Quién es responsable</h3>
+  <p>El responsable del tratamiento de los datos es <strong>Agustín Gutierrez</strong>, desarrollador de la aplicación Crimap (<code>com.gutierrez.crimap</code>), con domicilio en la Provincia de Buenos Aires, República Argentina. Consultas y reclamos: <strong>crimap.app@gmail.com</strong>.</p>
+
+  <h3>2 · Qué datos se recogen</h3>
+
+  <p><strong>Tu cuenta.</strong> Para entrar se usa tu cuenta de Google. De ahí se reciben tu dirección de correo y el nombre que tenés puesto en Google. No se recibe ni se guarda tu contraseña: eso lo maneja Google y Crimap nunca la ve.</p>
+
+  <p><strong>Tu ubicación.</strong> La app pide permiso de ubicación precisa, para mostrarte el mapa, guiarte hasta un destino, avisarte de hechos cercanos y para el botón de auxilio. También pide ubicación en segundo plano —con la pantalla apagada— y se usa en dos momentos y solamente en esos dos: mientras navegás hacia un destino, y mientras tenés una alerta de auxilio activa. En los dos casos aparece una notificación fija que te avisa que la app está siguiendo tu posición.</p>
+
+  <div class="clave">
+    <span class="tit">Lo más importante de esta página</span>
+    <p><strong>Tu ubicación exacta de todos los días no se guarda en ningún servidor.</strong> Lo que se guarda de tu perfil es la localidad —por ejemplo, «Ciudad Evita»—, que es lo que hace falta para saber a qué zona pertenecen los avisos que recibís. El recorrido que hacés mientras navegás se calcula en tu teléfono y no se sube.</p>
+  </div>
+
+  <p>Hay cuatro excepciones, y son a propósito:</p>
+  <ul>
+    <li><strong>Los reportes y las publicaciones.</strong> El punto que marcás en el mapa se guarda y se muestra a los demás. Lo elegís vos y es la razón de ser de la app.</li>
+    <li><strong>La alerta de auxilio.</strong> Mientras está activa, tu ubicación exacta se envía al servidor y a tus contactos de confianza, para que puedan encontrarte. Es exactamente lo que el botón promete hacer.</li>
+    <li><strong>El modo familia.</strong> Si —y solo si— vos aceptaste que alguien vea dónde estás, se guarda tu ubicación actual mientras ese permiso esté prendido. Se guarda <strong>una sola posición: la última</strong>. Cada una pisa a la anterior, así que no queda ningún registro de por dónde anduviste. Lo podés apagar o cortar cuando quieras, y en ese momento se borra. Si nunca usás el modo familia, no se guarda nada.</li>
+    <li><strong>Las direcciones que buscás.</strong> El texto que escribís se envía a Mapbox para convertirlo en un punto del mapa.</li>
+  </ul>
+
+  <p><strong>Lo que publicás.</strong> Los reportes, las publicaciones de mascotas, ayuda, personas y servicios, los mensajes del muro y los comentarios son públicos dentro de la app, junto con el nombre de tu cuenta. Las fotos que subís se guardan en el servidor y se muestran a los demás usuarios.</p>
+
+  <p><strong>Tus contactos de confianza.</strong> El nombre y el teléfono que escribís en esa pantalla se guardan en el servidor, porque son a quienes hay que avisar cuando apretás el botón de auxilio. <strong>La app no lee tu agenda del teléfono</strong>: solo tiene lo que vos escribís a mano.</p>
+
+  <p><strong>Datos técnicos.</strong> Un identificador de notificaciones (Firebase Cloud Messaging) para poder hacerte llegar los avisos; el identificador de publicidad de Android, que usa Google AdMob para mostrar los anuncios que sostienen la app; y registros de errores y uso (Firebase Crashlytics y Analytics), que sirven para arreglar fallas.</p>
+
+  <h3>3 · Para qué se usa cada cosa</h3>
+  <div class="tw">
+  <table>
+    <thead><tr><th>Dato</th><th>Para qué</th><th>Cuánto dura</th></tr></thead>
+    <tbody>
+      <tr><td>Correo y nombre</td><td>Identificar tu cuenta, mostrar quién publicó cada cosa, aplicar sanciones a quien abusa</td><td>Mientras tengas la cuenta</td></tr>
+      <tr><td>Localidad</td><td>Decidir a quién le corresponde cada aviso</td><td>Mientras tengas la cuenta</td></tr>
+      <tr><td>Ubicación precisa</td><td>Mapa, navegación, avisos cercanos, auxilio</td><td>Solo en el teléfono, mientras la usás</td></tr>
+      <tr><td>Punto de un reporte</td><td>Dibujarlo en el mapa de la comunidad</td><td>Hasta que se borre u oculte</td></tr>
+      <tr><td>Ubicación en una alerta</td><td>Que tus contactos puedan encontrarte</td><td>Se conserva como registro de la alerta</td></tr>
+      <tr><td>Fotos</td><td>Reconocer una mascota, un vehículo o un servicio</td><td>Hasta que se borre la publicación</td></tr>
+      <tr><td>Contactos de confianza</td><td>Avisarles cuando apretás el botón</td><td>Hasta que los borres</td></tr>
+      <tr><td>Token de notificaciones</td><td>Mandarte los avisos</td><td>Hasta que desinstales la app</td></tr>
+      <tr><td>Identificador de publicidad</td><td>Mostrar anuncios (Google AdMob)</td><td>Lo controlás desde los ajustes de Android</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>4 · Con quién se comparte</h3>
+  <p><strong>Los datos no se venden a nadie, ni se ceden para armar perfiles publicitarios fuera de la app.</strong> Se comparten solo con los servicios que hacen falta para que funcione:</p>
+  <ul>
+    <li><strong>Supabase</strong> — guarda la base de datos y las fotos.</li>
+    <li><strong>Google</strong> — inicio de sesión, notificaciones (Firebase) y publicidad (AdMob).</li>
+    <li><strong>Mapbox</strong> — dibuja el mapa y convierte las direcciones en puntos.</li>
+    <li><strong>Servicio de cálculo de rutas</strong> — recibe el punto de partida y el destino para devolver el camino.</li>
+    <li><strong>Twilio</strong> — cuando esté activo, enviará los mensajes de texto de las alertas de auxilio.</li>
+  </ul>
+  <p>Algunos de estos servicios tienen servidores fuera de la Argentina, así que los datos pueden almacenarse en otros países. También se pueden entregar datos a una autoridad judicial o policial cuando exista una orden que legalmente obligue a hacerlo.</p>
+
+  <h3>5 · Contenido publicado por los usuarios</h3>
+  <ul>
+    <li>Cada publicación, comentario y mensaje del muro se puede <strong>denunciar</strong> desde la misma app.</li>
+    <li>Cada usuario puede <strong>bloquear</strong> a otro y dejar de ver lo que publica.</li>
+    <li>Las denuncias las revisa la administración: el contenido que incumple se oculta o se elimina, y las cuentas que abusan quedan suspendidas.</li>
+  </ul>
+  <p>No publiques datos personales de terceros —domicilios, teléfonos, patentes de personas que no son vos— ni acuses a personas identificables de un delito. Eso se elimina.</p>
+
+  <h3>6 · Edad</h3>
+  <p>Crimap no está dirigida a menores de 13 años y no se recogen datos de menores de esa edad a sabiendas. Para <strong>cargar reportes</strong> hay que declarar tener al menos <strong>20 años</strong>, porque un reporte falso tiene consecuencias reales sobre los vecinos y sobre las personas señaladas. Si sos madre, padre o tutor y creés que un chico cargó datos, escribí a <strong>crimap.app@gmail.com</strong> y se borran.</p>
+
+  <h3>7 · Tus derechos</h3>
+  <p>Podés pedir, en cualquier momento y sin dar explicaciones: ver qué datos tuyos hay guardados, corregir los que estén mal, <strong>borrar tu cuenta y todo lo asociado a ella</strong>, o dejar de recibir avisos (los interruptores están dentro de la app). Para el borrado, mirá la sección de abajo.</p>
+  <p>Conforme a la Ley 25.326 de Protección de los Datos Personales de la República Argentina, la <strong>Agencia de Acceso a la Información Pública</strong> es el órgano de control y tiene la atribución de atender las denuncias por incumplimiento de las normas sobre datos personales.</p>
+
+  <h3>8 · Seguridad</h3>
+  <p>La conexión entre la app y el servidor viaja siempre cifrada. El acceso a la base está limitado por reglas que se aplican del lado del servidor: cada usuario solo puede leer y modificar lo que le corresponde. Ningún sistema es infalible; si llegara a ocurrir una filtración que afecte tus datos, se te avisará.</p>
+
+  <h3>9 · Cambios</h3>
+  <p>Si esta política cambia, se publica la versión nueva en esta misma dirección con la fecha actualizada arriba. Si el cambio es importante, se avisa dentro de la app.</p>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════════
+     BORRAR LA CUENTA
+     ══════════════════════════════════════════════════════════════════════ -->
+<section class="doc ancho" id="borrar">
+  <h2><span class="n">Trámite</span>Borrar tu cuenta de Crimap</h2>
+  <p class="fecha">Se puede hacer sin instalar nada y sin pedirle permiso a nadie.</p>
+
+  <h3>Desde la app, al toque</h3>
+  <ol class="pasos">
+    <li><b>Abrí Crimap</b> y tocá tu foto, arriba a la derecha.</li>
+    <li>Elegí <b>«Eliminar mi cuenta»</b>, al final del menú.</li>
+    <li>Leé qué se borra y qué queda, y confirmá. <b>Es inmediato y no se puede deshacer.</b></li>
+  </ol>
+
+  <h3>Sin la app, por correo</h3>
+  <p>Si ya la desinstalaste o no podés entrar, escribí a <strong>crimap.app@gmail.com</strong> <strong>desde la misma dirección de correo con la que entrabas a Crimap</strong>. Eso es lo único que hace falta para verificar que la cuenta es tuya: no te vamos a pedir ningún documento ni ninguna contraseña.</p>
+  <p><a class="boton" href="mailto:crimap.app@gmail.com?subject=Quiero%20borrar%20mi%20cuenta%20de%20Crimap&amp;body=Hola.%20Quiero%20que%20borren%20mi%20cuenta%20de%20Crimap%20y%20todos%20mis%20datos.%0A%0A(Manda%20este%20mail%20desde%20la%20misma%20direcci%C3%B3n%20con%20la%20que%20entrabas%20a%20la%20app.)">Escribir el correo</a></p>
+  <p>El pedido se resuelve dentro de los <strong>10 días hábiles</strong>. Vas a recibir una respuesta cuando esté hecho.</p>
+
+  <h3>Qué se borra</h3>
+  <ul>
+    <li>Tu perfil, con la edad declarada y tu reputación.</li>
+    <li>Tus contactos de confianza y sus teléfonos.</li>
+    <li>Tus alertas de auxilio y las ubicaciones que registraron.</li>
+    <li>Tus publicaciones de mascotas, ayuda, personas y servicios.</li>
+    <li>Tus comentarios y tus mensajes del muro.</li>
+    <li>Tus votos, tus corazones, a quién seguías y tu cuenta verificada si tenías una.</li>
+    <li>Tus fotos.</li>
+    <li>Tu usuario. No queda forma de volver a entrar con esa cuenta.</li>
+  </ul>
+
+  <div class="ojo">
+    <span class="tit">Qué NO se borra, y por qué</span>
+    <p><strong>Los reportes que cargaste quedan en el mapa, pero sin tu nombre detrás.</strong> Un reporte confirmado dejó de ser un dato tuyo: es un dato de la zona, y otros vecinos lo están usando para decidir por dónde volver a la noche. Borrarlo al irte sería sacarles algo a ellos. Lo que sí desaparece es el vínculo con vos: no queda forma de saber que fue tuyo.</p>
+    <p>Si querés que también se borren los reportes, decilo en el mismo correo y se borran.</p>
+  </div>
+
+  <p>Tampoco se borra el registro de una suspensión, si tenías una. Se guarda como una huella —no guarda tu correo— y existe para que una cuenta suspendida no se limpie borrándose y volviendo a entrar.</p>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════════
+     CONTACTO
+     ══════════════════════════════════════════════════════════════════════ -->
+<section class="doc ancho" id="contacto">
+  <h2><span class="n">Contacto</span>Escribinos</h2>
+  <p>Para reportar un problema, pedir que se baje una publicación, denunciar un uso indebido de la app o cualquier consulta sobre tus datos: <strong>crimap.app@gmail.com</strong>.</p>
+  <p>Crimap la hace una persona, no una empresa con mesa de ayuda. La respuesta puede tardar unos días, pero llega.</p>
+</section>
+
+<footer>
+  <div class="ancho">
+    <div>
+      <div class="marca">CRIMAP</div>
+      <div>Provincia de Buenos Aires, Argentina</div>
+    </div>
+    <div>
+      <a href="#privacidad">Privacidad</a> ·
+      <a href="#borrar">Borrar mi cuenta</a> ·
+      <a href="#contacto">Contacto</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

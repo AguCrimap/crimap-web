@@ -1,0 +1,196 @@
+<title>Privacidad de Crimap</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600&family=Inter:wght@400;500;700&display=swap">
+<style>
+  :root{
+    --tinta:#1B1A22; --tinta-2:#494654; --tinta-3:#75717F;
+    --fondo:#FBFAF8; --papel:#FFFFFF; --linea:#E4E1DC;
+    --violeta:#5546D8; --violeta-suave:#F0EEFC;
+    --aviso:#8A5A00; --aviso-fondo:#FFF6E2; --aviso-linea:#F0D9A0;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --tinta:#EDEAF3; --tinta-2:#B9B4C6; --tinta-3:#8B8698;
+      --fondo:#131218; --papel:#1B1A22; --linea:#302D3A;
+      --violeta:#A99BFF; --violeta-suave:#241F3D;
+      --aviso:#F3CE86; --aviso-fondo:#2C2413; --aviso-linea:#4D3E1C;
+    }
+  }
+  :root[data-theme="dark"]{
+    --tinta:#EDEAF3; --tinta-2:#B9B4C6; --tinta-3:#8B8698;
+    --fondo:#131218; --papel:#1B1A22; --linea:#302D3A;
+    --violeta:#A99BFF; --violeta-suave:#241F3D;
+    --aviso:#F3CE86; --aviso-fondo:#2C2413; --aviso-linea:#4D3E1C;
+  }
+
+  *{box-sizing:border-box}
+  body{
+    background:var(--fondo); color:var(--tinta);
+    font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+    font-size:16px; line-height:1.65; margin:0;
+  }
+  .hoja{max-width:44rem; margin:0 auto; padding:3rem 1.4rem 5rem}
+
+  header{border-bottom:2px solid var(--tinta); padding-bottom:1.4rem; margin-bottom:2.2rem}
+  .marca{
+    font-size:.72rem; letter-spacing:.16em; text-transform:uppercase;
+    font-weight:700; color:var(--violeta); margin:0 0 .5rem
+  }
+  h1{
+    font-family:'Newsreader',Georgia,serif; font-weight:600;
+    font-size:clamp(2rem,6vw,2.8rem); line-height:1.1; margin:0;
+    text-wrap:balance; letter-spacing:-.01em;
+  }
+  .fecha{color:var(--tinta-3); font-size:.86rem; margin:.7rem 0 0}
+
+  h2{
+    font-family:'Newsreader',Georgia,serif; font-weight:600;
+    font-size:1.45rem; line-height:1.25; margin:2.8rem 0 .7rem;
+    text-wrap:balance;
+  }
+  h2 .n{
+    font-family:'Inter',sans-serif; font-size:.8rem; font-weight:700;
+    color:var(--violeta); display:block; letter-spacing:.1em; margin-bottom:.25rem;
+  }
+  h3{font-size:1rem; font-weight:700; margin:1.6rem 0 .35rem}
+  p{margin:.7rem 0; color:var(--tinta-2)}
+  strong{color:var(--tinta); font-weight:600}
+  ul{margin:.7rem 0; padding-left:1.15rem; color:var(--tinta-2)}
+  li{margin:.45rem 0}
+  a{color:var(--violeta)}
+
+  .lede{font-size:1.06rem; color:var(--tinta)}
+
+  .tabla-envoltorio{overflow-x:auto; margin:1.1rem 0; border:1px solid var(--linea); border-radius:10px}
+  table{border-collapse:collapse; width:100%; min-width:34rem; background:var(--papel); font-size:.9rem}
+  th,td{text-align:left; padding:.7rem .85rem; border-bottom:1px solid var(--linea); vertical-align:top}
+  th{font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; color:var(--tinta-3); font-weight:700}
+  tr:last-child td{border-bottom:0}
+  td:first-child{font-weight:600; color:var(--tinta); white-space:nowrap}
+
+  .destacado{
+    background:var(--violeta-suave); border-left:3px solid var(--violeta);
+    border-radius:0 8px 8px 0; padding:.9rem 1.1rem; margin:1.3rem 0;
+  }
+  .destacado p{margin:0; color:var(--tinta)}
+
+  footer{
+    margin-top:3.5rem; padding-top:1.4rem; border-top:1px solid var(--linea);
+    color:var(--tinta-3); font-size:.85rem;
+  }
+</style>
+
+<div class="hoja">
+
+<header>
+  <p class="marca">Crimap</p>
+  <h1>Política de privacidad</h1>
+  <p class="fecha">Última actualización: 7 de septiembre de 2026</p>
+</header>
+
+<p class="lede">Crimap es una aplicación de mapa comunitario y botón de auxilio. Para funcionar necesita saber dónde estás y quién sos. Esta página explica qué se guarda, dónde, por cuánto tiempo y con quién se comparte, en castellano y sin vueltas.</p>
+
+<h2><span class="n">01</span>Quién es responsable</h2>
+<p>El responsable del tratamiento de los datos es <strong>Agustín Gutierrez</strong>, desarrollador de la aplicación Crimap (identificador <code>com.gutierrez.crimap</code>), con domicilio en la Provincia de Buenos Aires, República Argentina.</p>
+<p>Cualquier consulta, reclamo o pedido de borrado: <strong>crimap.app@gmail.com</strong>.</p>
+
+<h2><span class="n">02</span>Qué datos se recogen</h2>
+
+<h3>Tu cuenta</h3>
+<p>Para entrar se usa tu cuenta de Google. De ahí se reciben <strong>tu dirección de correo y el nombre que tenés puesto en Google</strong>. No se recibe ni se guarda tu contraseña: eso lo maneja Google y Crimap nunca la ve.</p>
+
+<h3>Tu ubicación</h3>
+<p>La app pide permiso de ubicación precisa. Se usa para mostrarte el mapa centrado donde estás, para guiarte cuando pedís que te lleve a un lugar, para avisarte de hechos cercanos y para el botón de auxilio.</p>
+<p>También pide permiso de <strong>ubicación en segundo plano</strong>, o sea con la pantalla apagada. Se usa en dos momentos y solamente en esos dos: mientras estás navegando hacia un destino, y mientras tenés una alerta de auxilio activa. En los dos casos aparece una notificación fija que te avisa que la app está siguiendo tu posición.</p>
+
+<div class="destacado">
+  <p><strong>Tu ubicación exacta de todos los días no se guarda en ningún servidor.</strong> Lo que se guarda de tu perfil es la localidad —por ejemplo, «Ciudad Evita»—, que es lo que hace falta para saber a qué barrio pertenecen los avisos que recibís. El recorrido que hacés mientras navegás se calcula y se muestra en tu teléfono, y no se sube.</p>
+</div>
+
+<p>Hay cuatro excepciones, y son a propósito:</p>
+<ul>
+  <li><strong>Los reportes y las publicaciones.</strong> Cuando cargás un hecho, una mascota perdida o un servicio, el punto que marcás en el mapa se guarda y se muestra en el mapa de todos. Ese punto lo elegís vos y es la razón de ser de la app.</li>
+  <li><strong>La alerta de auxilio.</strong> Mientras la alerta está activa, tu ubicación exacta se envía al servidor y a las personas que vos cargaste como contactos de confianza, para que puedan encontrarte. Es exactamente lo que el botón promete hacer.</li>
+  <li><strong>El modo familia.</strong> Si —y solo si— vos aceptaste que alguien vea dónde estás, se guarda tu ubicación actual mientras ese permiso esté prendido. Se guarda <strong>una sola posición: la última</strong>. Cada una pisa a la anterior, así que no queda ningún registro de por dónde anduviste. Lo podés apagar o cortar cuando quieras, y en ese momento se borra. Si nunca usás el modo familia, no se guarda nada.</li>
+  <li><strong>Las direcciones que buscás.</strong> El texto que escribís en el buscador se envía a Mapbox para convertirlo en un punto del mapa. Ver el punto 4.</li>
+</ul>
+
+<h3>Lo que publicás</h3>
+<p>Los reportes, las publicaciones de mascotas, ayuda, personas y servicios, los mensajes del muro y los comentarios <strong>son públicos</strong> dentro de la app, junto con el nombre de tu cuenta. Las fotos que subís se guardan en el servidor y se muestran a los demás usuarios.</p>
+
+<h3>Tus contactos de confianza</h3>
+<p>El nombre y el número de teléfono que escribís en la pantalla de contactos de confianza se guardan en el servidor, porque son a quienes hay que avisar cuando apretás el botón de auxilio. <strong>La app no lee tu agenda de contactos del teléfono</strong>: solo tiene lo que vos escribís a mano.</p>
+
+<h3>Datos técnicos</h3>
+<ul>
+  <li>Un <strong>identificador de notificaciones</strong> (token de Firebase Cloud Messaging), para poder hacerte llegar los avisos del barrio.</li>
+  <li>El <strong>identificador de publicidad de Android</strong>, que usa Google AdMob para mostrar los anuncios que sostienen la app.</li>
+  <li>Registros técnicos de errores y de uso del servidor, que sirven para arreglar fallas.</li>
+</ul>
+
+<h2><span class="n">03</span>Para qué se usa cada cosa</h2>
+<div class="tabla-envoltorio">
+<table>
+  <thead><tr><th>Dato</th><th>Para qué</th><th>Cuánto dura</th></tr></thead>
+  <tbody>
+    <tr><td>Correo y nombre</td><td>Identificar tu cuenta, mostrar quién publicó cada cosa, aplicar sanciones a quien abusa</td><td>Mientras tengas la cuenta</td></tr>
+    <tr><td>Localidad</td><td>Decidir a quién le corresponde cada aviso del barrio</td><td>Mientras tengas la cuenta</td></tr>
+    <tr><td>Ubicación precisa</td><td>Mapa, navegación, avisos cercanos, botón de auxilio</td><td>Solo en el teléfono, mientras la usás</td></tr>
+    <tr><td>Punto de un reporte</td><td>Dibujarlo en el mapa de la comunidad</td><td>Hasta que se borre u oculte</td></tr>
+    <tr><td>Ubicación en una alerta</td><td>Que tus contactos y el barrio puedan encontrarte</td><td>Se conserva como registro de la alerta</td></tr>
+    <tr><td>Fotos</td><td>Reconocer una mascota, un vehículo o un servicio</td><td>Hasta que se borre la publicación</td></tr>
+    <tr><td>Contactos de confianza</td><td>Avisarles cuando apretás el botón</td><td>Hasta que los borres</td></tr>
+    <tr><td>Token de notificaciones</td><td>Mandarte los avisos</td><td>Hasta que desinstalés la app</td></tr>
+    <tr><td>Identificador de publicidad</td><td>Mostrar anuncios (Google AdMob)</td><td>Lo controlás desde los ajustes de Android</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2><span class="n">04</span>Con quién se comparte</h2>
+<p><strong>Los datos no se venden a nadie, ni se ceden para armar perfiles publicitarios fuera de la app.</strong> Se comparten únicamente con los servicios que hacen falta para que la aplicación funcione:</p>
+<ul>
+  <li><strong>Supabase</strong> — guarda la base de datos y las fotos.</li>
+  <li><strong>Google</strong> — inicio de sesión (Google Sign-In), envío de notificaciones (Firebase) y publicidad (AdMob).</li>
+  <li><strong>Mapbox</strong> — dibuja el mapa y convierte las direcciones que buscás en puntos.</li>
+  <li><strong>Servicio de cálculo de rutas</strong> — recibe el punto de partida y el destino para devolver el camino.</li>
+  <li><strong>Twilio</strong> — cuando esté activo, enviará los mensajes de texto de las alertas de auxilio a tus contactos de confianza.</li>
+</ul>
+<p>Algunos de estos servicios tienen servidores fuera de la Argentina, así que los datos pueden almacenarse en otros países.</p>
+<p>También se pueden entregar datos a una autoridad judicial o policial cuando exista una orden que legalmente obligue a hacerlo.</p>
+
+<h2><span class="n">05</span>Contenido publicado por los usuarios</h2>
+<p>Crimap tiene contenido que escriben las personas, y eso trae dos obligaciones que se cumplen:</p>
+<ul>
+  <li>Cada publicación, comentario y mensaje del muro se puede <strong>denunciar</strong> desde la misma app.</li>
+  <li>Cada usuario puede <strong>bloquear</strong> a otro y dejar de ver lo que publica.</li>
+  <li>Las denuncias las revisa la administración y el contenido que incumple las reglas se oculta o se elimina. Las cuentas que abusan quedan suspendidas.</li>
+</ul>
+<p>No publiques datos personales de terceros —domicilios, teléfonos, patentes de personas que no son vos— ni acuses a personas identificables de un delito. Eso se elimina.</p>
+
+<h2><span class="n">06</span>Edad</h2>
+<p>Crimap no está dirigida a menores de 13 años y no se recogen datos de menores de esa edad a sabiendas. Para <strong>cargar reportes</strong> hay que declarar tener al menos <strong>20 años</strong>, porque un reporte falso tiene consecuencias reales sobre el barrio y sobre las personas señaladas.</p>
+<p>Si sos madre, padre o tutor y creés que un chico cargó datos en la app, escribinos a <strong>crimap.app@gmail.com</strong> y se borran.</p>
+
+<h2><span class="n">07</span>Tus derechos</h2>
+<p>Podés pedir, en cualquier momento y sin dar explicaciones:</p>
+<ul>
+  <li>Ver qué datos tuyos hay guardados.</li>
+  <li>Corregir los que estén mal.</li>
+  <li><strong>Borrar tu cuenta y todo lo asociado a ella.</strong></li>
+  <li>Que dejen de mandarte avisos: los interruptores están dentro de la app, en la pantalla de avisos.</li>
+</ul>
+<p>Para cualquiera de esas cosas, escribí a <strong>crimap.app@gmail.com</strong> desde la misma dirección con la que entrás a la app. El pedido se resuelve dentro de los 10 días hábiles.</p>
+<p>Al borrar la cuenta se eliminan tu perfil, tus contactos de confianza, tus publicaciones y tus fotos. Los reportes ya confirmados por otros vecinos pueden quedar en el mapa <strong>sin tu nombre</strong>, porque a esa altura ya son un dato del barrio y no tuyo.</p>
+<p>Conforme a la Ley 25.326 de Protección de los Datos Personales de la República Argentina, la <strong>Agencia de Acceso a la Información Pública</strong> es el órgano de control y tiene la atribución de atender las denuncias por incumplimiento de las normas sobre datos personales.</p>
+
+<h2><span class="n">08</span>Seguridad</h2>
+<p>La conexión entre la app y el servidor viaja siempre cifrada. El acceso a la base de datos está limitado por reglas que se aplican del lado del servidor: cada usuario solo puede leer y modificar lo que le corresponde. Ningún sistema es infalible; si llegara a ocurrir una filtración que afecte tus datos, se te avisará.</p>
+
+<h2><span class="n">09</span>Cambios</h2>
+<p>Si esta política cambia, se publica la versión nueva en esta misma dirección con la fecha actualizada arriba. Si el cambio es importante, se avisa dentro de la app.</p>
+
+<footer>
+  Crimap · <code>com.gutierrez.crimap</code> · Provincia de Buenos Aires, Argentina<br>
+  Contacto: crimap.app@gmail.com
+</footer>
+
+</div>
