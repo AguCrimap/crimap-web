@@ -1,4 +1,10 @@
-<title>Privacidad de Crimap</title>
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Política de privacidad de Crimap: ubicación, comunidad, mensajes, salas de voz, anuncios y eliminación de cuenta.">
+<title>Política de privacidad de Crimap</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600&family=Inter:wght@400;500;700&display=swap">
 <style>
   :root{
@@ -78,115 +84,129 @@
     color:var(--tinta-3); font-size:.85rem;
   }
 </style>
+</head>
+<body>
 
 <div class="hoja">
 
 <header>
   <p class="marca">Crimap</p>
   <h1>Política de privacidad</h1>
-  <p class="fecha">Última actualización: 7 de septiembre de 2026</p>
+  <p class="fecha">Última actualización: 29 de septiembre de 2026</p>
 </header>
 
-<p class="lede">Crimap es una aplicación de mapa comunitario y botón de auxilio. Para funcionar necesita saber dónde estás y quién sos. Esta página explica qué se guarda, dónde, por cuánto tiempo y con quién se comparte, en castellano y sin vueltas.</p>
+<p class="lede">Crimap es una aplicación de mapa comunitario, alertas y comunicación entre vecinos. Esta página explica qué datos utiliza cada función, con quién se comparten y cómo solicitar su eliminación.</p>
+<p><a href="#borrar-cuenta">Ir directamente a la eliminación de cuenta y datos</a>.</p>
 
 <h2><span class="n">01</span>Quién es responsable</h2>
 <p>El responsable del tratamiento de los datos es <strong>Agustín Gutierrez</strong>, desarrollador de la aplicación Crimap (identificador <code>com.gutierrez.crimap</code>), con domicilio en la Provincia de Buenos Aires, República Argentina.</p>
-<p>Cualquier consulta, reclamo o pedido de borrado: <strong>crimap.app@gmail.com</strong>.</p>
+<p>Cualquier consulta de privacidad o pedido de borrado: <a href="mailto:crimap.app@gmail.com">crimap.app@gmail.com</a>.</p>
 
 <h2><span class="n">02</span>Qué datos se recogen</h2>
 
 <h3>Tu cuenta</h3>
-<p>Para entrar se usa tu cuenta de Google. De ahí se reciben <strong>tu dirección de correo y el nombre que tenés puesto en Google</strong>. No se recibe ni se guarda tu contraseña: eso lo maneja Google y Crimap nunca la ve.</p>
+<p>Para iniciar sesión se utiliza Google y Supabase Authentication. Crimap recibe el identificador de tu cuenta, tu correo, tu nombre y, si existe, la foto de perfil de Google. Crimap no recibe tu contraseña de Google. El nombre y la foto pueden mostrarse junto a tus publicaciones, mensajes o participación en clubes, según la función que utilices.</p>
 
 <h3>Tu ubicación</h3>
-<p>La app pide permiso de ubicación precisa. Se usa para mostrarte el mapa centrado donde estás, para guiarte cuando pedís que te lleve a un lugar, para avisarte de hechos cercanos y para el botón de auxilio.</p>
-<p>También pide permiso de <strong>ubicación en segundo plano</strong>, o sea con la pantalla apagada. Se usa en dos momentos y solamente en esos dos: mientras estás navegando hacia un destino, y mientras tenés una alerta de auxilio activa. En los dos casos aparece una notificación fija que te avisa que la app está siguiendo tu posición.</p>
+<p>Si otorgás el permiso, Crimap usa la ubicación del dispositivo para centrar el mapa, mostrar hechos cercanos, calcular rutas, buscar farmacias de turno o de atención 24 horas próximas a tu GPS y gestionar el botón de auxilio. Podés limitar o revocar el permiso desde Android, aunque algunas funciones dejarán de estar disponibles.</p>
+<p>Durante una navegación o una alerta de auxilio activa, la ubicación puede seguir utilizándose con la pantalla bloqueada o la app en segundo plano, según los permisos y servicios que permita Android. No se usa la ubicación para seguirte continuamente fuera de esas funciones.</p>
 
 <div class="destacado">
-  <p><strong>Tu ubicación exacta de todos los días no se guarda en ningún servidor.</strong> Lo que se guarda de tu perfil es la localidad —por ejemplo, «Ciudad Evita»—, que es lo que hace falta para saber a qué barrio pertenecen los avisos que recibís. El recorrido que hacés mientras navegás se calcula y se muestra en tu teléfono, y no se sube.</p>
+  <p><strong>No creamos un historial permanente de tus recorridos cotidianos.</strong> La localidad que elegís se conserva en tu perfil. Algunas funciones sí transmiten una posición precisa al servidor o a un proveedor para responder tu pedido; se detallan abajo. Los servicios pueden conservar registros técnicos de las solicitudes.</p>
 </div>
 
-<p>Hay cuatro excepciones, y son a propósito:</p>
+<p>Estas son las situaciones en que una ubicación o un punto se envían fuera del teléfono:</p>
 <ul>
-  <li><strong>Los reportes y las publicaciones.</strong> Cuando cargás un hecho, una mascota perdida o un servicio, el punto que marcás en el mapa se guarda y se muestra en el mapa de todos. Ese punto lo elegís vos y es la razón de ser de la app.</li>
-  <li><strong>La alerta de auxilio.</strong> Mientras la alerta está activa, tu ubicación exacta se envía al servidor y a las personas que vos cargaste como contactos de confianza, para que puedan encontrarte. Es exactamente lo que el botón promete hacer.</li>
-  <li><strong>El modo familia.</strong> Si —y solo si— vos aceptaste que alguien vea dónde estás, se guarda tu ubicación actual mientras ese permiso esté prendido. Se guarda <strong>una sola posición: la última</strong>. Cada una pisa a la anterior, así que no queda ningún registro de por dónde anduviste. Lo podés apagar o cortar cuando quieras, y en ese momento se borra. Si nunca usás el modo familia, no se guarda nada.</li>
-  <li><strong>Las direcciones que buscás.</strong> El texto que escribís en el buscador se envía a Mapbox para convertirlo en un punto del mapa. Ver el punto 4.</li>
+  <li><strong>Publicaciones y reportes:</strong> el punto elegido para un hecho, mascota, servicio, proyecto, donación o evento se guarda para mostrar el pin a otros usuarios.</li>
+  <li><strong>Auxilio:</strong> la ubicación de una alerta activa se envía a Supabase y se comparte con los destinatarios de la alerta para que puedan encontrarte.</li>
+  <li><strong>Modo familia:</strong> si activás esa función y autorizás a otra persona, se conserva la última posición compartida mientras el permiso siga activo. No se utiliza para formar un recorrido histórico.</li>
+  <li><strong>Farmacias:</strong> al solicitar la más cercana, las coordenadas actuales se envían a Supabase para calcular la distancia a las farmacias cargadas. La consulta no crea una tabla de historial de ubicaciones.</li>
+  <li><strong>Mapa, búsqueda y rutas:</strong> Mapbox y el servicio de rutas reciben la información necesaria para mostrar el mapa, convertir una búsqueda en un lugar y calcular un trayecto, incluida la ubicación de origen y destino cuando corresponde.</li>
 </ul>
 
 <h3>Lo que publicás</h3>
-<p>Los reportes, las publicaciones de mascotas, ayuda, personas y servicios, los mensajes del muro y los comentarios <strong>son públicos</strong> dentro de la app, junto con el nombre de tu cuenta. Las fotos que subís se guardan en el servidor y se muestran a los demás usuarios.</p>
+<p>Los reportes, mascotas, pedidos de ayuda, servicios, proyectos, donaciones, eventos, publicaciones del muro y comentarios pueden mostrarse a otros usuarios de la app con tu nombre, foto de perfil y ubicación del pin que hayas elegido. Los textos, imágenes y archivos que adjuntás se guardan en Supabase. Evitá incluir datos personales de terceros o la ubicación de tu domicilio si no querés hacerlos visibles.</p>
+
+<h3>Mensajes, clubes y rifas</h3>
+<p>Los mensajes directos y las imágenes adjuntas se guardan para entregarlos a la persona destinataria; no son publicaciones del mapa. Los mensajes y actividades de un club se muestran dentro de ese club a quienes tengan acceso. La participación en una actividad puede ser visible para sus integrantes u organizadores. Las denuncias y tareas de moderación pueden requerir acceso del equipo autorizado al contenido correspondiente.</p>
+<p>En las rifas se guardan los números solicitados o asignados, la cuenta que participa y el estado de la solicitud o venta. El pago se acuerda con la organización fuera de Crimap: la app no procesa tarjetas ni cobra el dinero de las rifas.</p>
+
+<h3>Salas de voz</h3>
+<p>Si entrás a una sala de voz de un club, Crimap solicita acceso al micrófono y transmite tu audio en tiempo real mediante <strong>LiveKit Cloud</strong> para que las demás personas de la sala puedan escucharte. Podés silenciarte o salir. En Android la conversación puede continuar con la pantalla bloqueada mientras la sala esté activa, con una notificación del servicio en primer plano.</p>
+<p>Para permitir la conexión, LiveKit recibe un identificador de usuario, el nombre y la foto de perfil disponibles, y la sala a la que te unís. Crimap guarda en Supabase datos técnicos de la sesión, como sala, identificador de participante, hora de entrada, hora de salida y duración, para administrar y medir el uso de voz. El código actual de Crimap no activa una grabación ni transcripción de las salas, pero las personas que participan pueden oír lo que decís y podrían grabarlo por sus propios medios. No compartas información sensible en una sala.</p>
 
 <h3>Tus contactos de confianza</h3>
-<p>El nombre y el número de teléfono que escribís en la pantalla de contactos de confianza se guardan en el servidor, porque son a quienes hay que avisar cuando apretás el botón de auxilio. <strong>La app no lee tu agenda de contactos del teléfono</strong>: solo tiene lo que vos escribís a mano.</p>
+<p>El nombre y el número de teléfono que escribís para tus contactos de confianza se guardan en Supabase para gestionar avisos de auxilio. <strong>La app no lee tu agenda del teléfono</strong>: utiliza los datos que vos cargás.</p>
 
 <h3>Datos técnicos</h3>
 <ul>
-  <li>Un <strong>identificador de notificaciones</strong> (token de Firebase Cloud Messaging), para poder hacerte llegar los avisos del barrio.</li>
-  <li>El <strong>identificador de publicidad de Android</strong>, que usa Google AdMob para mostrar los anuncios que sostienen la app.</li>
-  <li>Registros técnicos de errores y de uso del servidor, que sirven para arreglar fallas.</li>
+  <li>Un <strong>token de Firebase Cloud Messaging</strong> para enviar notificaciones. También se tratan las preferencias de avisos que configurás.</li>
+  <li>Datos de uso, como pantallas visitadas y eventos de la app, mediante <strong>Firebase Analytics</strong>, y diagnósticos de fallas mediante <strong>Firebase Crashlytics</strong>. Estos servicios pueden tratar identificadores técnicos y datos del dispositivo.</li>
+  <li>Datos e identificadores necesarios para mostrar anuncios mediante <strong>Google AdMob</strong>, incluido el identificador de publicidad de Android cuando está disponible. La disponibilidad y personalización de anuncios dependen de la configuración de la app, del dispositivo y de las opciones de consentimiento aplicables.</li>
+  <li>Registros técnicos de solicitudes y del servidor para seguridad, funcionamiento y corrección de errores.</li>
 </ul>
 
 <h2><span class="n">03</span>Para qué se usa cada cosa</h2>
+<p>Los plazos indicados corresponden a los datos administrados por Crimap. Los proveedores pueden conservar registros técnicos propios conforme a sus políticas. Cuando no se indica un plazo automático, podés solicitar la eliminación como se explica en el punto 07.</p>
 <div class="tabla-envoltorio">
 <table>
   <thead><tr><th>Dato</th><th>Para qué</th><th>Cuánto dura</th></tr></thead>
   <tbody>
-    <tr><td>Correo y nombre</td><td>Identificar tu cuenta, mostrar quién publicó cada cosa, aplicar sanciones a quien abusa</td><td>Mientras tengas la cuenta</td></tr>
-    <tr><td>Localidad</td><td>Decidir a quién le corresponde cada aviso del barrio</td><td>Mientras tengas la cuenta</td></tr>
-    <tr><td>Ubicación precisa</td><td>Mapa, navegación, avisos cercanos, botón de auxilio</td><td>Solo en el teléfono, mientras la usás</td></tr>
-    <tr><td>Punto de un reporte</td><td>Dibujarlo en el mapa de la comunidad</td><td>Hasta que se borre u oculte</td></tr>
-    <tr><td>Ubicación en una alerta</td><td>Que tus contactos y el barrio puedan encontrarte</td><td>Se conserva como registro de la alerta</td></tr>
-    <tr><td>Fotos</td><td>Reconocer una mascota, un vehículo o un servicio</td><td>Hasta que se borre la publicación</td></tr>
-    <tr><td>Contactos de confianza</td><td>Avisarles cuando apretás el botón</td><td>Hasta que los borres</td></tr>
-    <tr><td>Token de notificaciones</td><td>Mandarte los avisos</td><td>Hasta que desinstalés la app</td></tr>
-    <tr><td>Identificador de publicidad</td><td>Mostrar anuncios (Google AdMob)</td><td>Lo controlás desde los ajustes de Android</td></tr>
+    <tr><td>Cuenta y localidad</td><td>Identificarte, asignar avisos y mostrar tu participación</td><td>Mientras mantengas la cuenta o hasta que cambies la localidad</td></tr>
+    <tr><td>GPS para mapa, ruta y farmacias</td><td>Ubicarte y responder búsquedas cercanas</td><td>Se utiliza durante la solicitud; Crimap no crea un historial permanente de estas consultas. Pueden existir registros técnicos de los servicios</td></tr>
+    <tr><td>Pines y publicaciones</td><td>Mostrar contenido comunitario</td><td>Hasta su eliminación u ocultamiento; ciertos reportes pueden conservarse sin atribución personal</td></tr>
+    <tr><td>Ubicación de auxilio o familia</td><td>Compartir una alerta o la última posición autorizada</td><td>Según la duración de la alerta o autorización; el registro de la alerta puede conservarse para seguridad</td></tr>
+    <tr><td>Mensajes, imágenes y solicitudes de rifas</td><td>Comunicación y organización de actividades</td><td>Hasta su eliminación, baja de cuenta o solicitud de borrado; no hay un plazo automático único para todas estas funciones</td></tr>
+    <tr><td>Audio en vivo</td><td>Transmitir la conversación de una sala</td><td>Mientras estés conectado; Crimap no guarda una copia del audio ni una transcripción en su base de datos</td></tr>
+    <tr><td>Registro de sesión de voz</td><td>Administrar la sala y medir su uso</td><td>La base actual no fija un borrado automático; podés solicitar su eliminación</td></tr>
+    <tr><td>Contactos de confianza</td><td>Gestionar avisos de auxilio</td><td>Hasta que los borres o solicites la eliminación de la cuenta</td></tr>
+    <tr><td>Token de notificaciones y preferencias</td><td>Enviar los avisos elegidos</td><td>Mientras el token sea válido o hasta que se elimine o revoque</td></tr>
+    <tr><td>Analítica, fallas y publicidad</td><td>Medir uso, corregir errores y mostrar anuncios</td><td>Según las opciones del dispositivo y los plazos de Google; consultá sus políticas de privacidad</td></tr>
   </tbody>
 </table>
 </div>
 
 <h2><span class="n">04</span>Con quién se comparte</h2>
-<p><strong>Los datos no se venden a nadie, ni se ceden para armar perfiles publicitarios fuera de la app.</strong> Se comparten únicamente con los servicios que hacen falta para que la aplicación funcione:</p>
+<p>Crimap no vende tus datos personales. Para ofrecer sus funciones utiliza los siguientes proveedores, que pueden recibir los datos necesarios para prestar cada servicio:</p>
 <ul>
-  <li><strong>Supabase</strong> — guarda la base de datos y las fotos.</li>
-  <li><strong>Google</strong> — inicio de sesión (Google Sign-In), envío de notificaciones (Firebase) y publicidad (AdMob).</li>
-  <li><strong>Mapbox</strong> — dibuja el mapa y convierte las direcciones que buscás en puntos.</li>
-  <li><strong>Servicio de cálculo de rutas</strong> — recibe el punto de partida y el destino para devolver el camino.</li>
-  <li><strong>Twilio</strong> — cuando esté activo, enviará los mensajes de texto de las alertas de auxilio a tus contactos de confianza.</li>
+  <li><strong>Supabase</strong> — autenticación, base de datos, imágenes, mensajes, coordenadas enviadas para buscar farmacias y funciones de servidor.</li>
+  <li><strong>LiveKit Cloud</strong> — conexión de salas de voz, transmisión de audio en tiempo real y datos técnicos de la conexión.</li>
+  <li><strong>Google</strong> — inicio de sesión; Firebase Cloud Messaging, Analytics y Crashlytics; y Google AdMob para anuncios y, cuando corresponde, sus opciones de consentimiento.</li>
+  <li><strong>Mapbox</strong> — mapa y búsqueda de lugares. El servicio de cálculo de rutas recibe el origen y el destino necesarios para proponer un camino.</li>
+  <li><strong>Servicios de mensajería de auxilio</strong> — si se activa el envío de SMS, el proveedor correspondiente recibirá el número de destino y el contenido necesario para entregar la alerta.</li>
 </ul>
-<p>Algunos de estos servicios tienen servidores fuera de la Argentina, así que los datos pueden almacenarse en otros países.</p>
+<p>Algunos proveedores procesan o almacenan información fuera de la Argentina. En particular, la infraestructura de voz puede encontrarse en otro país. Sus políticas y plazos técnicos de conservación son independientes de los de Crimap.</p>
 <p>También se pueden entregar datos a una autoridad judicial o policial cuando exista una orden que legalmente obligue a hacerlo.</p>
 
 <h2><span class="n">05</span>Contenido publicado por los usuarios</h2>
-<p>Crimap tiene contenido que escriben las personas, y eso trae dos obligaciones que se cumplen:</p>
+<p>Crimap contiene publicaciones y conversaciones creadas por sus usuarios. Para cuidar a la comunidad:</p>
 <ul>
-  <li>Cada publicación, comentario y mensaje del muro se puede <strong>denunciar</strong> desde la misma app.</li>
-  <li>Cada usuario puede <strong>bloquear</strong> a otro y dejar de ver lo que publica.</li>
-  <li>Las denuncias las revisa la administración y el contenido que incumple las reglas se oculta o se elimina. Las cuentas que abusan quedan suspendidas.</li>
+  <li>Podés denunciar contenido o bloquear usuarios mediante las opciones disponibles en la app.</li>
+  <li>Las denuncias pueden ser revisadas por personal autorizado. El contenido que incumple las reglas puede ocultarse o eliminarse y las cuentas pueden recibir restricciones.</li>
 </ul>
-<p>No publiques datos personales de terceros —domicilios, teléfonos, patentes de personas que no son vos— ni acuses a personas identificables de un delito. Eso se elimina.</p>
+<p>No publiques datos personales de terceros sin permiso, como domicilios o teléfonos, ni acusaciones identificables sin respaldo. En salas de voz, recordá que te escuchan las demás personas conectadas.</p>
 
 <h2><span class="n">06</span>Edad</h2>
 <p>Crimap no está dirigida a menores de 13 años y no se recogen datos de menores de esa edad a sabiendas. Para <strong>cargar reportes</strong> hay que declarar tener al menos <strong>20 años</strong>, porque un reporte falso tiene consecuencias reales sobre el barrio y sobre las personas señaladas.</p>
 <p>Si sos madre, padre o tutor y creés que un chico cargó datos en la app, escribinos a <strong>crimap.app@gmail.com</strong> y se borran.</p>
 
-<h2><span class="n">07</span>Tus derechos</h2>
-<p>Podés pedir, en cualquier momento y sin dar explicaciones:</p>
+<h2 id="borrar-cuenta"><span class="n">07</span>Eliminar tu cuenta y ejercer tus derechos</h2>
+<p>Podés pedir acceso, corrección o eliminación de tus datos y modificar tus preferencias de notificaciones. Para eliminar la cuenta desde la app, utilizá la opción <strong>«Borrar cuenta»</strong> de su menú. Si ya no tenés la app, podés iniciar el pedido desde esta página enviando un correo a <a href="mailto:crimap.app@gmail.com?subject=Solicitud%20de%20eliminaci%C3%B3n%20de%20cuenta%20Crimap">crimap.app@gmail.com con el asunto «Solicitud de eliminación de cuenta Crimap»</a>. Escribí desde la dirección vinculada a tu cuenta para que podamos verificar tu identidad; no envíes contraseñas ni documentos por correo.</p>
+<p>Indicá si querés borrar toda la cuenta o solo un contenido determinado. Se revisarán también los datos asociados a funciones como mensajes, clubes, rifas y registros de voz. Si un registro debe conservarse por seguridad, prevención de abuso o una obligación legal, se limitará su uso y se te explicará el motivo. Algunos reportes comunitarios pueden permanecer sin atribución a tu identidad.</p>
+<p>La opción de baja de la app y los pedidos recibidos por correo son vías distintas: el correo permite solicitar el borrado incluso después de desinstalar la aplicación. Te responderemos por esa misma vía.</p>
+<p>También podés pedir:</p>
 <ul>
-  <li>Ver qué datos tuyos hay guardados.</li>
-  <li>Corregir los que estén mal.</li>
-  <li><strong>Borrar tu cuenta y todo lo asociado a ella.</strong></li>
-  <li>Que dejen de mandarte avisos: los interruptores están dentro de la app, en la pantalla de avisos.</li>
+  <li>Conocer o corregir los datos vinculados a tu cuenta.</li>
+  <li>Eliminar una publicación, mensaje o dato específico cuando corresponda.</li>
+  <li>Dejar de recibir determinados avisos desde las preferencias de la app o los ajustes de Android.</li>
 </ul>
-<p>Para cualquiera de esas cosas, escribí a <strong>crimap.app@gmail.com</strong> desde la misma dirección con la que entrás a la app. El pedido se resuelve dentro de los 10 días hábiles.</p>
-<p>Al borrar la cuenta se eliminan tu perfil, tus contactos de confianza, tus publicaciones y tus fotos. Los reportes ya confirmados por otros vecinos pueden quedar en el mapa <strong>sin tu nombre</strong>, porque a esa altura ya son un dato del barrio y no tuyo.</p>
 <p>Conforme a la Ley 25.326 de Protección de los Datos Personales de la República Argentina, la <strong>Agencia de Acceso a la Información Pública</strong> es el órgano de control y tiene la atribución de atender las denuncias por incumplimiento de las normas sobre datos personales.</p>
 
 <h2><span class="n">08</span>Seguridad</h2>
-<p>La conexión entre la app y el servidor viaja siempre cifrada. El acceso a la base de datos está limitado por reglas que se aplican del lado del servidor: cada usuario solo puede leer y modificar lo que le corresponde. Ningún sistema es infalible; si llegara a ocurrir una filtración que afecte tus datos, se te avisará.</p>
+<p>Crimap usa conexiones cifradas para comunicarse con sus servicios y controles de acceso del lado del servidor para limitar quién puede consultar o modificar los datos. No publicamos las claves privadas de los proveedores en la app. Ningún sistema es infalible; si ocurre un incidente que afecte tus datos, se evaluará y comunicará conforme a las obligaciones aplicables.</p>
 
 <h2><span class="n">09</span>Cambios</h2>
-<p>Si esta política cambia, se publica la versión nueva en esta misma dirección con la fecha actualizada arriba. Si el cambio es importante, se avisa dentro de la app.</p>
+<p>Si cambian las funciones o el tratamiento de datos, actualizaremos esta página y su fecha. Cuando corresponda, avisaremos dentro de la app.</p>
 
 <footer>
   Crimap · <code>com.gutierrez.crimap</code> · Provincia de Buenos Aires, Argentina<br>
@@ -194,3 +214,6 @@
 </footer>
 
 </div>
+</body>
+</html>
+
