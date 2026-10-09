@@ -6,6 +6,7 @@
 <title>Crimap — el mapa de tu ciudad</title>
 <meta name="description" content="Crimap es el mapa de lo que pasa en tu ciudad, con botón de auxilio y avisos de vecinos. Hecho en La Matanza.">
 <meta name="theme-color" content="#5546D8">
+<link rel="icon" type="image/png" href="logo-crimap.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600;6..72,700&family=Inter:wght@400;500;600;700;800&display=swap">
@@ -49,7 +50,8 @@
   }
   .portada .ancho{position:relative; z-index:1}
   .logo{display:flex; align-items:center; gap:.6rem; margin-bottom:2rem}
-  .logo svg{width:34px; height:22px; display:block}
+  .logo img{width:42px; height:42px; display:block; border-radius:11px;
+    box-shadow:0 8px 24px rgba(0,0,0,.24)}
   .logo b{font-size:1.05rem; font-weight:800; letter-spacing:.16em; color:var(--tiza)}
   .portada h1{
     font-family:'Newsreader',Georgia,serif; font-weight:700;
@@ -133,9 +135,7 @@
 <header class="portada">
   <div class="ancho">
     <div class="logo">
-      <svg viewBox="0 0 160 100" aria-hidden="true">
-        <path fill="#8E80FF" d="M80 85 Q99 55 115 50 Q141 35 160 22 Q120 20 93 38 L88 20 L83 28 L77 28 L72 20 L67 38 Q40 20 0 22 Q19 35 45 50 Q61 55 80 85 Z"/>
-      </svg>
+      <img src="logo-crimap.png" alt="Logo de Crimap" width="42" height="42">
       <b>CRIMAP</b>
     </div>
 
